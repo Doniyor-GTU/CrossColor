@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scene/GameBoard.tscn" type="PackedScene" id=1]
+
+[node name="Level_81" instance=ExtResource( 1 )]
+level = 81
+
+[node name="Background" parent="ColorRect" index="0"]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="grid" parent="." index="1"]
+y_start_top_margin = 30
+offset = 36
+gap_between_boxes = 7
+level_pattern = [ [ 3, 3, 3, 3, 3, 3 ], [ 4, 2, 3, 3, 2, 4 ], [ 4, 2, 2, 2, 2, 4 ], [ 4, 2, 2, 2, 2, 4 ], [ 4, 2, 3, 3, 2, 4 ], [ 3, 3, 3, 3, 3, 3 ] ]
+box_size = 72
+shuffle_amount = 50
