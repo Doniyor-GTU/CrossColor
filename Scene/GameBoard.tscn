@@ -1,0 +1,693 @@
+[gd_scene load_steps=59 format=2]
+
+[ext_resource path="res://Fonts/911Fonts.com_CenturyGothicRegular__-_911fonts.com_fonts_mhpY.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/SwipeDetector.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/grid.gd" type="Script" id=3]
+[ext_resource path="res://Scene/SortButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/PropertiesScreen.gd" type="Script" id=5]
+[ext_resource path="res://Fonts/Bumpo.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Styles/Buttons/LeftButtons/left_normal.tres" type="StyleBox" id=7]
+[ext_resource path="res://Styles/Buttons/LeftButtons/left_pressed.tres" type="StyleBox" id=8]
+[ext_resource path="res://Styles/Buttons/RightButtons/right_normal.tres" type="StyleBox" id=9]
+[ext_resource path="res://Styles/Buttons/RightButtons/right_pressed.tres" type="StyleBox" id=10]
+[ext_resource path="res://Styles/Buttons/CenterButtons/center_pressed.tres" type="StyleBox" id=11]
+[ext_resource path="res://Styles/Buttons/CenterButtons/center_normal.tres" type="StyleBox" id=12]
+[ext_resource path="res://Art/barsHorizontal.png" type="Texture" id=13]
+[ext_resource path="res://Art/restoreBtn.png" type="Texture" id=14]
+[ext_resource path="res://Art/nextBtn.png" type="Texture" id=15]
+[ext_resource path="res://Art/rewardAdsBtn.png" type="Texture" id=16]
+[ext_resource path="res://Art/hintIcon.png" type="Texture" id=17]
+[ext_resource path="res://Scene/ProgressBar.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Scripts/GameBoard.gd" type="Script" id=19]
+[ext_resource path="res://Art/background_textures/background_0.png" type="Texture" id=20]
+[ext_resource path="res://Art/closeBtn.png" type="Texture" id=21]
+[ext_resource path="res://Art/shoppingCart.png" type="Texture" id=22]
+[ext_resource path="res://Art/musicOn.png" type="Texture" id=23]
+[ext_resource path="res://Art/vibrate_on.png" type="Texture" id=24]
+[ext_resource path="res://Scene/ShopScreen.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Scene/GiftScreen.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Scripts/Sounds.gd" type="Script" id=28]
+[ext_resource path="res://Art/musicOff.png" type="Texture" id=29]
+[ext_resource path="res://Art/vibrate_off.png" type="Texture" id=30]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=6]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.137255, 0.752941, 0.0196078, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+shadow_size = 4
+shadow_offset = Vector2( 3, 3 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 40
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="GDScript" id=10]
+script/source = "extends Button
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	visible = false
+	modulate = Color(1,1,1,0)
+
+func screen_in(pos):
+	rect_global_position = pos
+	visible = true
+	$Tween.interpolate_property(self, \"modulate\", modulate, Color(1,1,1,1), 0.3, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+	
+func screen_out():
+	$Tween.interpolate_property(self, \"modulate\", modulate, Color(1,1,1,0), 0.3, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Tween.start()
+	yield($Tween, \"tween_all_completed\")
+	visible = false
+"
+
+[sub_resource type="Animation" id=11]
+tracks/0/type = "value"
+tracks/0/path = NodePath("box_container:follow_viewport_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.15, 1.0 ]
+}
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.0352941, 0.439216, 0.137255, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.168627, 1, 0.368627, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 256, 256 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 256, 256 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 256, 256 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=21]
+size = 35
+extra_spacing_top = 4
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=26]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=29]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[node name="GameBoard" type="Node"]
+script = ExtResource( 19 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.445465
+margin_right = -0.445435
+color = Color( 0.780392, 0.854902, 0.929412, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopUi" type="Control" parent="ColorRect"]
+anchor_right = 1.0
+margin_bottom = 164.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="Label" parent="ColorRect/TopUi"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -121.0
+margin_top = 26.0
+margin_right = 121.0
+margin_bottom = 89.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "LEVEL 10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="Button" parent="ColorRect/TopUi"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -57.0
+margin_right = 100.0
+margin_bottom = 3.0
+rect_min_size = Vector2( 100, 60 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="ColorRect/TopUi/MenuButton"]
+modulate = Color( 0.0392157, 0.521569, 0.160784, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -30.0
+margin_top = -25.0
+margin_right = 30.0
+margin_bottom = 25.0
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="ColorRect/TopUi"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -57.0
+margin_bottom = 3.0
+rect_min_size = Vector2( 100, 60 )
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="ColorRect/TopUi/NextButton"]
+modulate = Color( 0.0392157, 0.521569, 0.160784, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -26.0
+margin_top = -21.0
+margin_right = 27.0
+margin_bottom = 23.0
+texture = ExtResource( 15 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="add_icon" type="TextureRect" parent="ColorRect/TopUi/NextButton"]
+visible = false
+modulate = Color( 0.0392157, 0.521569, 0.160784, 1 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -27.0
+margin_top = 1.5
+margin_right = -4.0
+margin_bottom = 24.5
+rect_min_size = Vector2( 23, 23 )
+texture = ExtResource( 16 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShuffleButton" type="Button" parent="ColorRect/TopUi"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -62.0
+margin_bottom = -2.0
+rect_min_size = Vector2( 100, 60 )
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="ColorRect/TopUi/ShuffleButton"]
+modulate = Color( 0.0392157, 0.521569, 0.160784, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -26.0
+margin_top = -21.0
+margin_right = 16.0
+margin_bottom = 21.0
+texture = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="add_icon" type="TextureRect" parent="ColorRect/TopUi/ShuffleButton"]
+visible = false
+modulate = Color( 0.0392157, 0.521569, 0.160784, 1 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -27.0
+margin_top = 1.5
+margin_right = -4.0
+margin_bottom = 24.5
+rect_min_size = Vector2( 23, 23 )
+texture = ExtResource( 16 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" parent="ColorRect/TopUi" instance=ExtResource( 18 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -110.5
+margin_top = 45.5612
+margin_right = 82.5
+margin_bottom = 57.5612
+
+[node name="Label" type="Label" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -282.0
+margin_top = -263.0
+margin_right = 284.0
+margin_bottom = -78.0
+rect_pivot_offset = Vector2( 283, 92.5 )
+mouse_filter = 1
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Press to Start"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+autoplay = "label_attention"
+anims/label_attention = SubResource( 6 )
+
+[node name="grid" type="Node2D" parent="."]
+script = ExtResource( 3 )
+n_x_n = 6
+x_start = 148
+y_start = 200
+offset = 32
+gap_between_boxes = 6
+level_pattern = [ [ 3, 3, -1, -1, 3, 3 ], [ 3, 3, -1, -1, 3, 3 ], [ -1, -1, -1, -1, -1, -1 ], [ -1, -1, -1, -1, -1, -1 ], [ 3, 3, -1, -1, 3, 3 ], [ 3, 3, -1, -1, 3, 3 ] ]
+
+[node name="SortButton" parent="grid" instance=ExtResource( 4 )]
+visible = true
+margin_left = 164.0
+margin_top = 762.0
+margin_right = 387.0
+margin_bottom = 840.0
+custom_styles/hover = ExtResource( 12 )
+custom_styles/pressed = ExtResource( 11 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 8 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color_disabled = Color( 0.0392157, 0.521569, 0.160784, 1 )
+custom_colors/font_color = Color( 0.0392157, 0.521569, 0.160784, 1 )
+custom_colors/font_color_hover = Color( 0.0392157, 0.521569, 0.160784, 1 )
+custom_colors/font_color_pressed = Color( 0.0392157, 0.521569, 0.160784, 1 )
+keep_pressed_outside = true
+text = "    Remind"
+expand_icon = true
+script = SubResource( 10 )
+
+[node name="icon" type="TextureRect" parent="grid/SortButton"]
+modulate = Color( 0.0392157, 0.521569, 0.160784, 1 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 7.0
+margin_top = -26.5
+margin_right = 58.0
+margin_bottom = 24.5
+texture = ExtResource( 17 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SwipeDetector" type="Node" parent="grid"]
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="grid/SwipeDetector"]
+one_shot = true
+
+[node name="box_container" type="CanvasLayer" parent="grid"]
+follow_viewport_enable = true
+
+[node name="GridAnimation" type="AnimationPlayer" parent="grid"]
+anims/zoom_effect = SubResource( 11 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="PropertiesScreen" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.784314 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+sound_on_texture = ExtResource( 23 )
+sound_off_texture = ExtResource( 29 )
+vibrate_on_texture = ExtResource( 24 )
+vibrate_off_texture = ExtResource( 30 )
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PropertiesScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -155.0
+margin_top = -207.0
+margin_right = 152.0
+margin_bottom = 206.0
+custom_styles/panel = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer/PropertiesScreen/Panel"]
+modulate = Color( 0.541176, 1, 0.694118, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -41.0
+margin_top = 11.0
+margin_right = -13.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 28, 28 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/normal = SubResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PropertiesScreen/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -111.0
+margin_top = -94.0
+margin_right = 77.0
+margin_bottom = 94.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShopButton" type="Button" parent="CanvasLayer/PropertiesScreen/Panel/VBoxContainer"]
+margin_right = 188.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 188, 60 )
+size_flags_horizontal = 4
+custom_styles/hover = SubResource( 17 )
+custom_styles/pressed = SubResource( 18 )
+custom_styles/focus = SubResource( 19 )
+custom_styles/normal = SubResource( 20 )
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/PropertiesScreen/Panel/VBoxContainer/ShopButton"]
+modulate = Color( 0.541176, 1, 0.694118, 1 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 8.0
+margin_top = -22.5
+margin_right = 53.0
+margin_bottom = 22.5
+rect_min_size = Vector2( 45, 45 )
+texture = ExtResource( 22 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/PropertiesScreen/Panel/VBoxContainer/ShopButton"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -121.0
+margin_top = -18.0
+margin_right = 8.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 21 )
+custom_colors/font_color = Color( 0.541176, 1, 0.694118, 1 )
+text = "Shop"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoundButton" type="Button" parent="CanvasLayer/PropertiesScreen/Panel/VBoxContainer"]
+margin_top = 64.0
+margin_right = 188.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 188, 60 )
+size_flags_horizontal = 4
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
+custom_styles/focus = SubResource( 24 )
+custom_styles/normal = SubResource( 25 )
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/PropertiesScreen/Panel/VBoxContainer/SoundButton"]
+modulate = Color( 0.541176, 1, 0.694118, 1 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -30.0
+margin_right = 60.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 23 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/PropertiesScreen/Panel/VBoxContainer/SoundButton"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -121.0
+margin_top = -18.0
+margin_right = 8.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 21 )
+custom_colors/font_color = Color( 0.541176, 1, 0.694118, 1 )
+text = "Sound"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VibrateButton" type="Button" parent="CanvasLayer/PropertiesScreen/Panel/VBoxContainer"]
+margin_top = 128.0
+margin_right = 188.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 188, 60 )
+size_flags_horizontal = 4
+custom_styles/hover = SubResource( 26 )
+custom_styles/pressed = SubResource( 27 )
+custom_styles/focus = SubResource( 28 )
+custom_styles/normal = SubResource( 29 )
+
+[node name="icon" type="TextureRect" parent="CanvasLayer/PropertiesScreen/Panel/VBoxContainer/VibrateButton"]
+modulate = Color( 0.541176, 1, 0.694118, 1 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 2.0
+margin_top = -28.0
+margin_right = 58.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 24 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/PropertiesScreen/Panel/VBoxContainer/VibrateButton"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -121.0
+margin_top = -18.0
+margin_right = 20.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 21 )
+custom_colors/font_color = Color( 0.541176, 1, 0.694118, 1 )
+text = "Vibrate"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="CanvasLayer/PropertiesScreen"]
+
+[node name="Shop" parent="CanvasLayer" instance=ExtResource( 25 )]
+visible = false
+
+[node name="GiftScreen" parent="CanvasLayer" instance=ExtResource( 26 )]
+visible = false
+
+[node name="Sounds" type="Node" parent="."]
+script = ExtResource( 28 )
+
+[connection signal="coin_add" from="." to="CanvasLayer/Shop" method="_on_GameBoard_coin_add"]
+[connection signal="pressed" from="ColorRect/TopUi/MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="ColorRect/TopUi/NextButton" to="grid" method="_on_NextButton_pressed"]
+[connection signal="pressed" from="ColorRect/TopUi/ShuffleButton" to="grid" method="_on_ShuffleButton_pressed"]
+[connection signal="gui_input" from="ColorRect/Label" to="grid" method="_on_Label_gui_input"]
+[connection signal="firework_added" from="grid" to="Sounds" method="_on_grid_firework_added"]
+[connection signal="swiped" from="grid" to="Sounds" method="_on_grid_swiped"]
+[connection signal="win" from="grid" to="Sounds" method="_on_grid_win"]
+[connection signal="button_down" from="grid/SortButton" to="Sounds" method="_on_SortButton_button_down"]
+[connection signal="button_down" from="grid/SortButton" to="grid" method="_on_SortButton_button_down"]
+[connection signal="button_up" from="grid/SortButton" to="Sounds" method="_on_SortButton_button_up"]
+[connection signal="button_up" from="grid/SortButton" to="grid" method="_on_SortButton_button_up"]
+[connection signal="swiped" from="grid/SwipeDetector" to="grid" method="_on_SwipeDetector_swiped"]
+[connection signal="timeout" from="grid/SwipeDetector/Timer" to="grid/SwipeDetector" method="_on_Timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/PropertiesScreen/Panel/Button" to="CanvasLayer/PropertiesScreen" method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PropertiesScreen/Panel/VBoxContainer/ShopButton" to="CanvasLayer/PropertiesScreen" method="_on_ShopButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PropertiesScreen/Panel/VBoxContainer/SoundButton" to="CanvasLayer/PropertiesScreen" method="_on_SoundButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PropertiesScreen/Panel/VBoxContainer/VibrateButton" to="CanvasLayer/PropertiesScreen" method="_on_VibrateButton_pressed"]
+[connection signal="goto_gameboard" from="CanvasLayer/Shop" to="grid" method="_on_Shop_goto_gameboard"]
+[connection signal="double_btn" from="CanvasLayer/GiftScreen" to="." method="_on_GiftScreen_double_btn"]
+[connection signal="no_thanks_btn" from="CanvasLayer/GiftScreen" to="." method="_on_GiftScreen_no_thanks_btn"]

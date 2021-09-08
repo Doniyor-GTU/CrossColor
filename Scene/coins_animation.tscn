@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Art/coinIcon.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/coins_animation.gd" type="Script" id=2]
+
+[node name="coins_animation" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="."]
+margin_left = -31.0531
+margin_top = -92.0598
+margin_right = 18.9469
+margin_bottom = -42.0598
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon2" type="TextureRect" parent="."]
+margin_left = 49.6148
+margin_top = -64.9883
+margin_right = 99.6148
+margin_bottom = -14.9882
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon3" type="TextureRect" parent="."]
+margin_left = -122.3
+margin_top = -60.0711
+margin_right = -72.2999
+margin_bottom = -10.0711
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon4" type="TextureRect" parent="."]
+margin_left = -27.7183
+margin_top = 32.6246
+margin_right = 22.2817
+margin_bottom = 82.6246
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon5" type="TextureRect" parent="."]
+margin_left = 54.8463
+margin_top = 11.188
+margin_right = 104.846
+margin_bottom = 61.188
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon6" type="TextureRect" parent="."]
+margin_left = -111.707
+margin_top = 8.16888
+margin_right = -61.7074
+margin_bottom = 58.1689
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]

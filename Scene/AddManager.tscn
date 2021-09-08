@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://admob-lib/admob.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/AddManager.gd" type="Script" id=2]
+
+[node name="AddManager" type="Node"]
+script = ExtResource( 2 )
+
+[node name="AdMob" type="Node" parent="."]
+script = ExtResource( 1 )
+is_real = true
+banner_on_top = false
+banner_id = "ca-app-pub-8647559794008327/9738353092"
+interstitial_id = "ca-app-pub-8647559794008327/7743772810"
+rewarded_id = "ca-app-pub-8647559794008327/1691523875"
+
+[node name="AddStartTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="BannerFailedTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="BannerLoadedTimer" type="Timer" parent="."]
+wait_time = 16.0
+one_shot = true
+
+[node name="RewardFailedTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="InterstitialFailedTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="banner_failed_to_load" from="AdMob" to="." method="_on_AdMob_banner_failed_to_load"]
+[connection signal="banner_loaded" from="AdMob" to="." method="_on_AdMob_banner_loaded"]
+[connection signal="interstitial_failed_to_load" from="AdMob" to="." method="_on_AdMob_interstitial_failed_to_load"]
+[connection signal="rewarded" from="AdMob" to="." method="_on_AdMob_rewarded"]
+[connection signal="rewarded_video_closed" from="AdMob" to="." method="_on_AdMob_rewarded_video_closed"]
+[connection signal="rewarded_video_failed_to_load" from="AdMob" to="." method="_on_AdMob_rewarded_video_failed_to_load"]
+[connection signal="timeout" from="AddStartTimer" to="." method="_on_BannerStartTimer_timeout"]
+[connection signal="timeout" from="BannerFailedTimer" to="." method="_on_BannerFailedTimer_timeout"]
+[connection signal="timeout" from="BannerLoadedTimer" to="." method="_on_BannerLoadedTimer_timeout"]
+[connection signal="timeout" from="RewardFailedTimer" to="." method="_on_RewardFailedTimer_timeout"]
+[connection signal="timeout" from="InterstitialFailedTimer" to="." method="_on_InterstitialFailedTimer_timeout"]

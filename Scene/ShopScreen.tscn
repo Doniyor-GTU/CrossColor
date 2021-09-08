@@ -1,0 +1,707 @@
+[gd_scene load_steps=85 format=2]
+
+[ext_resource path="res://Art/box_plane.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/Bumpo.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Art/coinIcon.png" type="Texture" id=3]
+[ext_resource path="res://Styles/Buttons/CenterButtons/center_normal.tres" type="StyleBox" id=4]
+[ext_resource path="res://Styles/Buttons/CenterButtons/center_pressed.tres" type="StyleBox" id=5]
+[ext_resource path="res://Art/backBtn.png" type="Texture" id=6]
+[ext_resource path="res://Art/theme2.png" type="Texture" id=7]
+[ext_resource path="res://Art/noAdd.png" type="Texture" id=8]
+[ext_resource path="res://Styles/Buttons/ShopButtons/shop_normal.tres" type="StyleBox" id=9]
+[ext_resource path="res://Styles/Buttons/ShopButtons/shop_pressed.tres" type="StyleBox" id=10]
+[ext_resource path="res://Scripts/ShopButtons.gd" type="Script" id=11]
+[ext_resource path="res://Scene/ProductButton.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scripts/box_type_buttons_container.gd" type="Script" id=13]
+[ext_resource path="res://Art/square_textures/1/monkey.png" type="Texture" id=14]
+[ext_resource path="res://Art/square_textures/1/tiger.png" type="Texture" id=15]
+[ext_resource path="res://Art/square_textures/1/rhino.png" type="Texture" id=16]
+[ext_resource path="res://Scene/WatchVideoButton.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scripts/GridContainerBackgrounds.gd" type="Script" id=18]
+[ext_resource path="res://Scene/Product2Button.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Art/background_textures/templates/1.png" type="Texture" id=20]
+[ext_resource path="res://Art/background_textures/templates/0.png" type="Texture" id=21]
+[ext_resource path="res://Scripts/ShopScreen.gd" type="Script" id=22]
+[ext_resource path="res://Scene/NoAddButton.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Art/NoAdds2.png" type="Texture" id=24]
+[ext_resource path="res://Art/background_textures/templates/2.png" type="Texture" id=25]
+[ext_resource path="res://Art/square_textures/1/chick.png" type="Texture" id=26]
+[ext_resource path="res://Art/square_textures/2/4.png" type="Texture" id=27]
+[ext_resource path="res://Art/square_textures/2/0.png" type="Texture" id=28]
+[ext_resource path="res://Art/square_textures/2/2.png" type="Texture" id=29]
+[ext_resource path="res://Art/square_textures/2/3.png" type="Texture" id=30]
+[ext_resource path="res://Art/square_textures/3/6.png" type="Texture" id=31]
+[ext_resource path="res://Art/square_textures/3/5.png" type="Texture" id=32]
+[ext_resource path="res://Art/square_textures/3/1.png" type="Texture" id=33]
+[ext_resource path="res://Art/square_textures/3/3.png" type="Texture" id=34]
+[ext_resource path="res://Art/background_textures/templates/4.png" type="Texture" id=35]
+[ext_resource path="res://Art/background_textures/templates/3.png" type="Texture" id=36]
+[ext_resource path="res://Art/square_textures/4/2.png" type="Texture" id=37]
+[ext_resource path="res://Art/square_textures/4/5.png" type="Texture" id=38]
+[ext_resource path="res://Art/square_textures/4/3.png" type="Texture" id=39]
+[ext_resource path="res://Art/square_textures/4/4.png" type="Texture" id=40]
+[ext_resource path="res://Art/square_textures/5/2.png" type="Texture" id=41]
+[ext_resource path="res://Art/square_textures/5/6.png" type="Texture" id=42]
+[ext_resource path="res://Art/square_textures/5/4.png" type="Texture" id=43]
+[ext_resource path="res://Art/square_textures/5/3.png" type="Texture" id=44]
+[ext_resource path="res://Art/background_textures/templates/8.png" type="Texture" id=45]
+[ext_resource path="res://Art/background_textures/templates/7.png" type="Texture" id=46]
+[ext_resource path="res://Art/background_textures/templates/5.png" type="Texture" id=47]
+[ext_resource path="res://Art/background_textures/templates/6.png" type="Texture" id=48]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 35
+use_filter = true
+extra_spacing_top = 10
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 35
+use_filter = true
+extra_spacing_top = 8
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+modulate_color = Color( 0.823529, 0.823529, 0.823529, 1 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+modulate_color = Color( 0.823529, 0.823529, 0.823529, 1 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=13]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=14]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+modulate_color = Color( 0.823529, 0.823529, 0.823529, 1 )
+
+[sub_resource type="StyleBoxTexture" id=15]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=16]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=17]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+modulate_color = Color( 0.823529, 0.823529, 0.823529, 1 )
+
+[sub_resource type="StyleBoxTexture" id=18]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=19]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=20]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+modulate_color = Color( 0.823529, 0.823529, 0.823529, 1 )
+
+[sub_resource type="StyleBoxTexture" id=21]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=22]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=23]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+modulate_color = Color( 0.823529, 0.823529, 0.823529, 1 )
+
+[sub_resource type="StyleBoxTexture" id=24]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=25]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=26]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+modulate_color = Color( 0.823529, 0.823529, 0.823529, 1 )
+
+[sub_resource type="StyleBoxTexture" id=27]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=28]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=29]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+modulate_color = Color( 0.823529, 0.823529, 0.823529, 1 )
+
+[sub_resource type="StyleBoxTexture" id=30]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=31]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=32]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+modulate_color = Color( 0.823529, 0.823529, 0.823529, 1 )
+
+[sub_resource type="StyleBoxTexture" id=33]
+resource_local_to_scene = true
+texture = ExtResource( 21 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=34]
+resource_local_to_scene = true
+texture = ExtResource( 24 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[sub_resource type="StyleBoxTexture" id=35]
+resource_local_to_scene = true
+texture = ExtResource( 24 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+modulate_color = Color( 0.823529, 0.823529, 0.823529, 1 )
+
+[sub_resource type="StyleBoxTexture" id=36]
+resource_local_to_scene = true
+texture = ExtResource( 24 )
+region_rect = Rect2( 0, 0, 1265, 1265 )
+
+[node name="Shop" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0.0666667, 0.0196078, 0.941176 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopUI" type="Control" parent="ColorRect"]
+anchor_top = 0.00390625
+anchor_right = 1.0
+anchor_bottom = 0.0771484
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="BackButton" type="Button" parent="ColorRect/TopUI"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 24.0
+margin_top = -25.0
+margin_right = 106.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 60, 50 )
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="ColorRect/TopUI/BackButton"]
+modulate = Color( 0.0392157, 0.521569, 0.160784, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -23.0
+margin_top = -23.0
+margin_right = 23.0
+margin_bottom = 23.0
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="ColorRect/TopUI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -98.0
+margin_top = -24.5
+margin_right = 84.0
+margin_bottom = 25.5
+custom_fonts/font = SubResource( 2 )
+text = "BOX"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coins" type="Label" parent="ColorRect/TopUI"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -22.5
+margin_right = -81.0
+margin_bottom = 25.5
+custom_fonts/font = SubResource( 3 )
+text = "300"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="TextureRect" parent="ColorRect/TopUI/Coins"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 10.0
+margin_top = -24.5
+margin_right = 60.0
+margin_bottom = 24.5
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShopButtons" type="HBoxContainer" parent="ColorRect"]
+anchor_top = 0.0908203
+anchor_right = 1.0
+anchor_bottom = 0.166015
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+normal_color = Color( 0.0392157, 0.521569, 0.160784, 1 )
+pressed_color = Color( 0.101961, 0.956863, 0.384314, 1 )
+
+[node name="Button" type="Button" parent="ColorRect/ShopButtons"]
+margin_right = 286.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 70, 0 )
+size_flags_horizontal = 3
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = ExtResource( 10 )
+custom_styles/normal = ExtResource( 9 )
+disabled = true
+
+[node name="icon" type="TextureRect" parent="ColorRect/ShopButtons/Button"]
+modulate = Color( 0.101961, 0.956863, 0.384314, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="ColorRect/ShopButtons"]
+margin_left = 290.0
+margin_right = 576.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = ExtResource( 10 )
+custom_styles/normal = ExtResource( 9 )
+
+[node name="icon" type="TextureRect" parent="ColorRect/ShopButtons/Button2"]
+modulate = Color( 0.0392157, 0.521569, 0.160784, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="ColorRect/ShopButtons"]
+visible = false
+margin_left = 386.0
+margin_right = 576.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 10 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = ExtResource( 10 )
+custom_styles/normal = ExtResource( 9 )
+
+[node name="icon" type="TextureRect" parent="ColorRect/ShopButtons/Button3"]
+modulate = Color( 0.0392157, 0.521569, 0.160784, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BOXContent" type="Control" parent="ColorRect"]
+anchor_left = 0.000819312
+anchor_top = 0.181641
+anchor_right = 1.00082
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/BOXContent"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -185.0
+margin_top = -329.0
+margin_right = 185.0
+margin_bottom = 267.0
+custom_constants/vseparation = 28
+custom_constants/hseparation = 30
+columns = 2
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProductButton6" parent="ColorRect/BOXContent/GridContainer" instance=ExtResource( 12 )]
+size_flags_horizontal = 6
+
+[node name="ProductButton" parent="ColorRect/BOXContent/GridContainer" instance=ExtResource( 12 )]
+margin_left = 200.0
+margin_right = 370.0
+size_flags_horizontal = 6
+product_code = 1
+price = 500
+icon1 = ExtResource( 15 )
+icon2 = ExtResource( 16 )
+icon3 = ExtResource( 14 )
+icon4 = ExtResource( 26 )
+
+[node name="ProductButton2" parent="ColorRect/BOXContent/GridContainer" instance=ExtResource( 12 )]
+margin_top = 208.0
+margin_bottom = 388.0
+size_flags_horizontal = 6
+product_code = 2
+price = 400
+icon1 = ExtResource( 30 )
+icon2 = ExtResource( 29 )
+icon3 = ExtResource( 28 )
+icon4 = ExtResource( 27 )
+
+[node name="ProductButton3" parent="ColorRect/BOXContent/GridContainer" instance=ExtResource( 12 )]
+margin_left = 200.0
+margin_top = 208.0
+margin_right = 370.0
+margin_bottom = 388.0
+size_flags_horizontal = 6
+product_code = 3
+price = 450
+icon1 = ExtResource( 31 )
+icon2 = ExtResource( 33 )
+icon3 = ExtResource( 32 )
+icon4 = ExtResource( 34 )
+
+[node name="ProductButton4" parent="ColorRect/BOXContent/GridContainer" instance=ExtResource( 12 )]
+margin_top = 416.0
+margin_bottom = 596.0
+size_flags_horizontal = 6
+product_code = 4
+price = 400
+icon1 = ExtResource( 38 )
+icon2 = ExtResource( 39 )
+icon3 = ExtResource( 37 )
+icon4 = ExtResource( 40 )
+
+[node name="ProductButton5" parent="ColorRect/BOXContent/GridContainer" instance=ExtResource( 12 )]
+margin_left = 200.0
+margin_top = 416.0
+margin_right = 370.0
+margin_bottom = 596.0
+size_flags_horizontal = 6
+product_code = 5
+price = 450
+icon1 = ExtResource( 44 )
+icon2 = ExtResource( 43 )
+icon3 = ExtResource( 41 )
+icon4 = ExtResource( 42 )
+
+[node name="THEMEContent" type="Control" parent="ColorRect"]
+visible = false
+anchor_top = 0.181641
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/THEMEContent"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -245.0
+margin_top = -329.0
+margin_right = 245.0
+margin_bottom = 211.0
+custom_constants/vseparation = 30
+custom_constants/hseparation = 20
+columns = 3
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Product2Button" parent="ColorRect/THEMEContent/GridContainer" instance=ExtResource( 19 )]
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+bg_texture = ExtResource( 21 )
+
+[node name="Product2Button2" parent="ColorRect/THEMEContent/GridContainer" instance=ExtResource( 19 )]
+margin_left = 170.0
+margin_right = 320.0
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+product_code = 1
+price = 1300
+bg_texture = ExtResource( 20 )
+
+[node name="Product2Button3" parent="ColorRect/THEMEContent/GridContainer" instance=ExtResource( 19 )]
+margin_left = 340.0
+margin_right = 490.0
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/normal = SubResource( 15 )
+product_code = 2
+price = 900
+bg_texture = ExtResource( 25 )
+
+[node name="Product2Button4" parent="ColorRect/THEMEContent/GridContainer" instance=ExtResource( 19 )]
+margin_top = 190.0
+margin_bottom = 350.0
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/normal = SubResource( 18 )
+product_code = 3
+bg_texture = ExtResource( 36 )
+
+[node name="Product2Button5" parent="ColorRect/THEMEContent/GridContainer" instance=ExtResource( 19 )]
+margin_left = 170.0
+margin_top = 190.0
+margin_right = 320.0
+margin_bottom = 350.0
+custom_styles/hover = SubResource( 19 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/normal = SubResource( 21 )
+product_code = 4
+price = 1500
+bg_texture = ExtResource( 35 )
+
+[node name="Product2Button6" parent="ColorRect/THEMEContent/GridContainer" instance=ExtResource( 19 )]
+margin_left = 340.0
+margin_top = 190.0
+margin_right = 490.0
+margin_bottom = 350.0
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
+custom_styles/normal = SubResource( 24 )
+product_code = 5
+price = 800
+bg_texture = ExtResource( 47 )
+
+[node name="Product2Button7" parent="ColorRect/THEMEContent/GridContainer" instance=ExtResource( 19 )]
+margin_top = 380.0
+margin_bottom = 540.0
+custom_styles/hover = SubResource( 25 )
+custom_styles/pressed = SubResource( 26 )
+custom_styles/normal = SubResource( 27 )
+product_code = 6
+price = 900
+bg_texture = ExtResource( 48 )
+
+[node name="Product2Button8" parent="ColorRect/THEMEContent/GridContainer" instance=ExtResource( 19 )]
+margin_left = 170.0
+margin_top = 380.0
+margin_right = 320.0
+margin_bottom = 540.0
+custom_styles/hover = SubResource( 28 )
+custom_styles/pressed = SubResource( 29 )
+custom_styles/normal = SubResource( 30 )
+product_code = 7
+price = 1500
+bg_texture = ExtResource( 46 )
+
+[node name="Product2Button9" parent="ColorRect/THEMEContent/GridContainer" instance=ExtResource( 19 )]
+margin_left = 340.0
+margin_top = 380.0
+margin_right = 490.0
+margin_bottom = 540.0
+custom_styles/hover = SubResource( 31 )
+custom_styles/pressed = SubResource( 32 )
+custom_styles/normal = SubResource( 33 )
+product_code = 8
+price = 800
+bg_texture = ExtResource( 45 )
+
+[node name="ADDContent" type="Control" parent="ColorRect"]
+visible = false
+anchor_top = 0.181641
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="NoAddButton" parent="ColorRect/ADDContent" instance=ExtResource( 23 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -75.0
+margin_top = -168.0
+margin_right = 75.0
+margin_bottom = -8.0
+custom_styles/hover = SubResource( 34 )
+custom_styles/pressed = SubResource( 35 )
+custom_styles/normal = SubResource( 36 )
+
+[node name="GetCoinButton" parent="ColorRect" instance=ExtResource( 17 )]
+visible = false
+margin_top = -188.0
+margin_bottom = -125.0
+minute = 2
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="pressed" from="ColorRect/TopUI/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="ColorRect/ShopButtons/Button" to="ColorRect/ShopButtons" method="_on_Button_pressed"]
+[connection signal="pressed" from="ColorRect/ShopButtons/Button2" to="ColorRect/ShopButtons" method="_on_Button2_pressed"]
+[connection signal="pressed" from="ColorRect/ShopButtons/Button3" to="ColorRect/ShopButtons" method="_on_Button3_pressed"]
+[connection signal="button_pressed" from="ColorRect/BOXContent/GridContainer/ProductButton6" to="ColorRect/BOXContent/GridContainer" method="_on_ProductButton6_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/BOXContent/GridContainer/ProductButton6" to="ColorRect/BOXContent/GridContainer" method="_on_ProductButton6_buy_button_pressed"]
+[connection signal="button_pressed" from="ColorRect/BOXContent/GridContainer/ProductButton" to="ColorRect/BOXContent/GridContainer" method="_on_ProductButton_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/BOXContent/GridContainer/ProductButton" to="ColorRect/BOXContent/GridContainer" method="_on_ProductButton_buy_button_pressed"]
+[connection signal="button_pressed" from="ColorRect/BOXContent/GridContainer/ProductButton2" to="ColorRect/BOXContent/GridContainer" method="_on_ProductButton2_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/BOXContent/GridContainer/ProductButton2" to="ColorRect/BOXContent/GridContainer" method="_on_ProductButton2_buy_button_pressed"]
+[connection signal="button_pressed" from="ColorRect/BOXContent/GridContainer/ProductButton3" to="ColorRect/BOXContent/GridContainer" method="_on_ProductButton3_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/BOXContent/GridContainer/ProductButton3" to="ColorRect/BOXContent/GridContainer" method="_on_ProductButton3_buy_button_pressed"]
+[connection signal="button_pressed" from="ColorRect/BOXContent/GridContainer/ProductButton4" to="ColorRect/BOXContent/GridContainer" method="_on_ProductButton4_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/BOXContent/GridContainer/ProductButton4" to="ColorRect/BOXContent/GridContainer" method="_on_ProductButton4_buy_button_pressed"]
+[connection signal="button_pressed" from="ColorRect/BOXContent/GridContainer/ProductButton5" to="ColorRect/BOXContent/GridContainer" method="_on_ProductButton5_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/BOXContent/GridContainer/ProductButton5" to="ColorRect/BOXContent/GridContainer" method="_on_ProductButton5_buy_button_pressed"]
+[connection signal="button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button_buy_button_pressed"]
+[connection signal="button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button2" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button2_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button2" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button2_buy_button_pressed"]
+[connection signal="button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button3" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button3_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button3" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button3_buy_button_pressed"]
+[connection signal="button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button4" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button4_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button4" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button4_buy_button_pressed"]
+[connection signal="button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button5" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button5_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button5" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button5_buy_button_pressed"]
+[connection signal="button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button6" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button6_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button6" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button6_buy_button_pressed"]
+[connection signal="button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button7" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button7_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button7" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button7_buy_button_pressed"]
+[connection signal="button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button8" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button8_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button8" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button8_buy_button_pressed"]
+[connection signal="button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button9" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button9_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/THEMEContent/GridContainer/Product2Button9" to="ColorRect/THEMEContent/GridContainer" method="_on_Product2Button9_buy_button_pressed"]
+[connection signal="buy_button_pressed" from="ColorRect/ADDContent/NoAddButton" to="." method="_on_NoAddButton_buy_button_pressed"]
+[connection signal="button_pressed" from="ColorRect/GetCoinButton" to="." method="_on_GetCoinButton_button_pressed"]

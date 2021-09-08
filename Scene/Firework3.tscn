@@ -1,0 +1,176 @@
+[gd_scene load_steps=14 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+
+func _ready():
+	pass # Replace with function body.
+
+func play():
+	$Particles2D.emitting = true
+"
+
+[sub_resource type="Curve" id=2]
+min_value = -360.0
+max_value = 360.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 0.554545 ), 0.0, 1.51616, 0, 0, Vector2( 0.202532, 0.6 ), 0.123117, 0.123117, 0, 0, Vector2( 0.740506, 0.204545 ), -1.95868, -1.95868, 0, 0, Vector2( 1, 0.0749999 ), -3.07792, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+width = 2000
+curve = SubResource( 5 )
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 0.348864 ), 0.0, 2.47374, 0, 0, Vector2( 1, 0.385227 ), -2.03763, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+render_priority = 7
+next_pass = SubResource( 4 )
+lifetime_randomness = 0.6
+trail_size_modifier = SubResource( 8 )
+emission_shape = 2
+emission_box_extents = Vector3( 100, 50, 10 )
+flag_rotate_y = true
+flag_disable_z = true
+direction = Vector3( 50, 100, 0 )
+spread = 180.0
+gravity = Vector3( 0, 200, 0 )
+initial_velocity = 350.0
+initial_velocity_random = 0.1
+angular_velocity = 10000.0
+angular_velocity_random = 0.6
+angular_velocity_curve = SubResource( 3 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = -250.0
+radial_accel_random = 0.5
+damping = 100.0
+scale = 25.0
+scale_random = 0.8
+scale_curve = SubResource( 6 )
+color = Color( 0.027451, 0.839216, 1, 1 )
+hue_variation = 0.36
+hue_variation_random = 1.0
+
+[sub_resource type="ParticlesMaterial" id=10]
+render_priority = 7
+next_pass = SubResource( 4 )
+lifetime_randomness = 0.6
+trail_size_modifier = SubResource( 8 )
+emission_shape = 2
+emission_box_extents = Vector3( 0, 10, 10 )
+flag_rotate_y = true
+flag_disable_z = true
+direction = Vector3( 50, 100, 0 )
+spread = 180.0
+gravity = Vector3( 0, 200, 0 )
+initial_velocity = 500.0
+initial_velocity_random = 0.6
+angular_velocity = 500.0
+angular_velocity_random = 0.6
+angular_velocity_curve = SubResource( 3 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = -250.0
+radial_accel_random = 0.5
+damping = 100.0
+scale = 0.25
+scale_random = 0.1
+scale_curve = SubResource( 6 )
+color = Color( 0.027451, 0.839216, 1, 1 )
+hue_variation = 0.36
+hue_variation_random = 1.0
+
+[sub_resource type="StreamTexture" id=11]
+flags = 4
+load_path = "res://.import/confetti_shape.png-2d592ed9d7ee96bd5039eed66f008301.stex"
+
+[sub_resource type="ParticlesMaterial" id=12]
+render_priority = 7
+next_pass = SubResource( 4 )
+lifetime_randomness = 0.6
+trail_size_modifier = SubResource( 8 )
+emission_shape = 2
+emission_box_extents = Vector3( 0, 10, 10 )
+flag_rotate_y = true
+flag_disable_z = true
+direction = Vector3( 50, 100, 0 )
+spread = 180.0
+gravity = Vector3( 0, 200, 0 )
+initial_velocity = 500.0
+initial_velocity_random = 0.6
+angular_velocity = 500.0
+angular_velocity_random = 0.6
+angular_velocity_curve = SubResource( 3 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = -250.0
+radial_accel_random = 0.5
+damping = 100.0
+scale = 0.4
+scale_random = 0.1
+scale_curve = SubResource( 6 )
+color = Color( 0.027451, 0.839216, 1, 1 )
+hue_variation = 0.36
+hue_variation_random = 1.0
+
+[sub_resource type="StreamTexture" id=13]
+flags = 4
+load_path = "res://.import/confetti_shape3.png-ace2165aaa46af0050937949f98b534f.stex"
+
+[node name="Firework" type="Node2D"]
+z_index = 2
+z_as_relative = false
+script = SubResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+z_index = 2
+z_as_relative = false
+amount = 50
+lifetime = 5.0
+explosiveness = 0.9
+randomness = 0.7
+fract_delta = false
+visibility_rect = Rect2( -50, -50, 100, 100 )
+draw_order = 1
+process_material = SubResource( 9 )
+
+[node name="Particles2D2" type="Particles2D" parent="."]
+z_index = 2
+z_as_relative = false
+amount = 20
+lifetime = 5.0
+explosiveness = 0.9
+randomness = 0.7
+fract_delta = false
+visibility_rect = Rect2( -50, -50, 100, 100 )
+draw_order = 1
+process_material = SubResource( 10 )
+texture = SubResource( 11 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Particles2D4" type="Particles2D" parent="."]
+z_index = 2
+z_as_relative = false
+amount = 20
+lifetime = 5.0
+explosiveness = 0.9
+randomness = 0.7
+fract_delta = false
+visibility_rect = Rect2( -50, -50, 100, 100 )
+draw_order = 1
+process_material = SubResource( 12 )
+texture = SubResource( 13 )
