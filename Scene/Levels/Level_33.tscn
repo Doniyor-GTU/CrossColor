@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scene/GameBoard.tscn" type="PackedScene" id=1]
+
+[node name="Level_33" instance=ExtResource( 1 )]
+level = 33
+
+[node name="grid" parent="." index="1"]
+n_x_n = 4
+offset = 45
+gap_between_boxes = 10
+level_pattern = [ [ -1, 1, 1, -1 ], [ 1, -1, -1, 1 ], [ 1, -1, -1, 1 ], [ -1, 1, 1, -1 ] ]
+box_size = 90
+shuffle_amount = 25
